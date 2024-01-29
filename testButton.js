@@ -1,10 +1,10 @@
 class Button {
-    constructor(width, height) {
+    constructor(width, height, type, color) {
       this.props = {
-        type: 'button',
-        color: 'blue',
-        width: width,
-        height: height,
+        width,
+        height,
+        type,
+        color,
       };
     }
   
@@ -14,10 +14,19 @@ class Button {
   }
   
   function testButton() {
-    
-    const myButton = new Button(100, 80);
+
+    const referenceButton = new Button(100, 50, 'button', 'green');
   
-    console.log(myButton.props);
+    
+    const testButton = new Button(100, 50, 'button', 'green');
+  
+    for (const prop in referenceButton.props) {
+      if (referenceButton.props[prop] !== testButton.props[prop]) {
+        console.error(`Property ${prop} does not match.`);
+      }
+    }
+  
+    console.log('Test passed successfully!');
   }
   
-    testButton();
+  testButton();
